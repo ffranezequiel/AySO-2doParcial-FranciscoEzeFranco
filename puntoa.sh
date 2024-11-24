@@ -23,7 +23,7 @@ l
 #establecemos la particion 1 como primaria
 w 
 
-sudo mkswap /dev/sdb1
+sudo mkswap /dev/sdc1
 sudo swapon /dev/sdc1
 free -h
 #Crear PV, VG y LV con LVM:
@@ -58,6 +58,11 @@ sudo mkfs.ext4 /dev/mapper/vgDevelopers-lvTesters
 sudo mkfs.ext4 /dev/mapper/vgDevelopers-lvDevops
 sudo mkfs.ext4 /dev/mapper/vgAdmin-lvAdmin
 #MONTAMOS LOS DISCOS
+sudo mkdir /mnt/lvDevelopers
+sudo mkdir /mnt/lvTesters
+sudo mkdir /mnt/lvDevops
+sudo mkdir /mnt/lvAdmin
+
 sudo mount /dev/mapper/vgDevelopers-lvDevelopers /mnt/lvDevelopers
 sudo mount /dev/mapper/vgDevelopers-lvTesters /mnt/lvTesters
 sudo mount /dev/mapper/vgDevelopers-lvDevops /mnt/lvDevops

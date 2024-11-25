@@ -4,17 +4,19 @@ ssh-keygen
 cat ~/.ssh/id_rsa.pub
 
 #PEGAMOS LA SSH EN EL HOST
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDaU6F1bd/TqE8Oz4xpPpmMRsDlZjBmtbAwM52N9zaKXyhr6ZsIobMVReVE5qc5nbeIi02POpvKqESj/Mmsbr4NubM1ewiMcEMh3qShwY15uTgszJU/MUmrLItRE2dOpR/tCsz5BW0jZkT/Og6Bw/0IhXOfk7f7rzshE2W2YowxaMe1o/X2VmRNpwPyihLDzamzmDqzeYPNhuOsFcbZvIucknsrbO3PO0TAMQiTJR7f5h1m3ZSP1y3eGw08r3KGIF+EwQ06F198k4cqvqEO+/rXCOtCrFRBW65si428m2ld+eCa5krSnxHTRgbDgYdexIf6PXl2ZyIvYdhTse7r2j2QafBxDHwEdYhAMDh3UUZp3msq4kA5jpBjFmj3t7alZElM6hGMrkj/nrTivgjev2vAR9k9Lj55VPs+bx4mR8naA0gOKBKLx8e+6DZvAGpdRpEh9kgBxSKn65Zsr0DZaVrCykHi2jvOdJMU/eKeDGEK2oVY1pPvlv6oRS6JMK5q6CE= vagrant@vm2doParcialAyso
+vim .ssh/id_rsa.pub
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDYTzv+qEIhnhgi9QxrKVqf9EfmV5TSxT1iLfTU3w2E3ZqY+aUhvNjUGGQO1mstSckUfz6gDNmokyiHFCxBmaiXW250L1bnC+jeBEO5bhqpK9vn4pAPs/OyFuJeCUL7011mjEftOwpB1X+obuDlEz4YAfpnoHRE3RnzC0hPVwCFHMsmTmKWUlYJivsbTAf0xP4UbSKskcngqyO90kWUR/qBfWeeodEDfxv6s0pEIEjTkKYOFsIRCHzcrbhWjA31JIrPIQSLa1if+SJHnMItbnMqdTbQh5gOO/zXYP5FTwBntsI/W7AQdVjesHA/iAojGC1jm8uutseE244UCI3thvX7K+L3eOtcAFl3knpdJXsYgdmkMxOy8di1Kjv9x12qsjOdGzQPQiFW38RixKExjXOZHAmhwLm9T/4zpYc40kHyMJEQ153QixY8kya0nX/THeIETNPSrFbYfY4QZ/3eriKdcYecHKFjuwW1vCcYsxNXq4Vidi2yFUSYlDI7pCFJRb8= vagrant@vm2doParcialAyso" >> .ssh/authorized_keys
+
 #NOS CONECTAMOS DESDE AMN
 ssh vagrant@192.168.56.9
 git clone https://github.com/upszot/UTN-FRA_SO_Ansible.git
 cd ejemplo_02
 vim inventory
-        [testing]
+	[testing]
 
 
 	desarrollo]
-	192.168.56.2
+	192.168.56.9
 
 	[produccion]
 
@@ -47,7 +49,5 @@ vim playbook.yml
       with_items:
         - "{{ WEB_SERVICE }}"
 
-
 ansible-playbook -i inventory playbook.yml
-ssh vagrant@192.168.56.2
 sudo apt list --installed |grep apache
